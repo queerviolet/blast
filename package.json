@@ -1,0 +1,19 @@
+{
+  "name": "blast",
+  "version": "0.0.1",
+  "description": "Blasting React into Space: A talk for Full Stack Fest 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/queerviolet/blast.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/queerviolet/blast/issues"
+  },
+  "homepage": "https://github.com/queerviolet/blast#readme"
+}
