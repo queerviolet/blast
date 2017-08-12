@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Blasting React Into Space: A Talk for Full Stack Fest 2017",
   "main": "index.js",
+  "kubo": "blast",
   "engines": {
     "node": ">= 7.0.0"
   },
