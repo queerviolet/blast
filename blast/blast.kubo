@@ -1,7 +1,6 @@
 @[Action] Blasting React Into Space
 
-NOTE: THIS VERSION OF THE FILE CRASHES THE MMM PARSER. SAVED FOR
-INVESTIGATION.
+NOTE: THIS VERSION NO LONGER DOES
 
 # 2017-08-07 23:42:25 (CEST).md
 
@@ -77,59 +76,6 @@ INVESTIGATION.
   - Workshop system
   - We want dynamic, full-bleed web GL content
     - needs to be able to overflow the bounds of the DOM
-
-  - on writing Many Matters: 
-    
-    Markdown is nice. You can just put in code `like this`,
-    or like this:
-
-    ```js
-      // hi
-    ```
-
-    And if you want to extend it, you can use HTML tags.
-    Our workshops have hints:
-
-      <hint title='a secret'>
-        This won't show until you click.
-      </hint>
-    
-    That's nice. We're often writing about JSX, so we have stuff
-    that looks like this:
-
-    ```js
-      export default () => <Component>
-      </Component>
-    ```
-
-    And sometimes that's inside a <hint>:
-
-    <hint title='click to confuse the markdown parser'>      
-      ```js
-        // Frankly, I can understand why the parser is confused
-        // at this point. Are we inside HTML? Getting parsed as
-        // markdown? Does the HTML parser take precedence because
-        // we're inside a <hint> tag, or do the backticks make it
-        // literal, and oh god, what if my comment has Markdown,
-        // people actually do that? Like, to generate this file,
-        // run:
-        //
-        //    ```sh
-        //    scream > /dev/null
-        //    ```
-        // So I can understand why the Markdown parser is confused here.
-        export default () => <Component>
-        </Component>        
-      ```
-    </hint>
-
-    I believe that there's some way of arranging the Markdown and HTML parsers
-    that make this work right. I believe this in the same way I believe 0.99999999 = 1.
-    Yes, but also no.
-
-    So many matters does not try to solve the problem of mingling Markdown and HTML-like
-    tags, and instead tackles the problem of separating blocks written in whatever language
-    from each other, and providing metadata for them.
 
 
 
