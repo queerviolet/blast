@@ -1,0 +1,183 @@
+@[Action] Blasting React Into Space
+
+# 2017-08-07 23:42:25 (CEST).md
+
+# Blasting React Into Space
+
+## Who am I (5 mins)
+  - Ashi, teacher at Fullstack Academy
+  - We teach React
+  - Students are interested in doing new and crazy things
+    - have little sense of what's possible
+    - so, sometimes they want to do things that are not
+    - but also, they are very amenable to encouragement to do new
+      and interesting things
+
+## Capstone Projects
+  - pgb-vsu
+  - personal speaking trainer (a-frame)
+
+## React (5 mins)
+  - Data-driven mapping to UI elements
+  - Pattern, syntax, implementation
+    - Pattern: the Virtual DOM as function bindings
+      - partial
+      - extensible
+      - introspectable
+      - editable
+    - Syntax: JSX
+    - Implementation: Reconciler
+
+## WebGL
+  - High level interface to low level hardware
+  - Your CPU:
+    - A few (powerful) cores
+    - Branch prediction and speculative execution
+    - Better at serial workloads
+  - Your GPU:
+    - https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline    
+    - LOTS of crap cores
+    - Insanely great at parallel workloads, like figuring out the color of
+      every pixel on the screen 
+      a hundred times per second.
+  
+  - Writing WebGL breaks down into:
+    - Writing shaders: little programs that run on the GPU and tell it what to draw
+    - Managing buffers: data to feed these little programs, and where to store their
+      results.
+    - APIs like Vulkan and Metal make this more obvious.      
+    - WebGL, based on OpenGL, is a bit of an old API, and has some quaintness as a
+      result.
+  - Writing WebGL:
+
+    @[Code] vertex
+    void main() {
+      gl_Position = projectionMatrix * vec4(position, 1.0);
+    }
+
+    @[Code] fragment
+    void main() {
+      gl_FragColor = vec4(1, 1, 1, 1);
+    }
+
+    Two shaders. This draws the geometry in flat white.
+  
+  - Example of drawing some points.
+  - Example of drawing a *lot* of points.
+  - Now we make them move.
+
+
+## Case study: kubo (20 mins)
+  - Learning goals
+    - speaking through the DOM?
+    - connect web gl content to 
+  - Workshop system
+  - We want dynamic, full-bleed web GL content
+    - needs to be able to overflow the bounds of the DOM
+
+  - on writing Many Matters: 
+    
+    Markdown is nice. You can just put in code `like this`,
+    or like this:
+
+    ```js
+      // hi
+    ```
+
+    And if you want to extend it, you can use HTML tags.
+    Our workshops have hints:
+
+      <hint title='a secret'>
+        This won't show until you click.
+      </hint>
+    
+    That's nice. We're often writing about JSX, so we have stuff
+    that looks like this:
+
+    ```js
+      export default () => <Component>
+      </Component>
+    ```
+
+    And sometimes that's inside a <hint>:
+
+    <hint title='click to confuse the markdown parser'>      
+      ```js
+        // Frankly, I can understand why the parser is confused
+        // at this point. Are we inside HTML? Getting parsed as
+        // markdown? Does the HTML parser take precedence because
+        // we're inside a <hint> tag, or do the backticks make it
+        // literal, and oh god, what if my comment has Markdown,
+        // people actually do that? Like, to generate this file,
+        // run:
+        //
+        //    ```sh
+        //    scream > /dev/null
+        //    ```
+        // So I can understand why the Markdown parser is confused here.
+        export default () => <Component>
+        </Component>        
+      ```
+    </hint>
+
+    I believe that there's some way of arranging the Markdown and HTML parsers
+    that make this work right. I believe this in the same way I believe 0.99999999 = 1.
+    Yes, but also no.
+
+    So many matters does not try to solve the problem of mingling Markdown and HTML-like
+    tags, and instead tackles the problem of separating blocks written in whatever language
+    from each other, and providing metadata for them.
+
+
+
+## Case study: sequencer (20 mins)
+  - Learning goal: using context to make a React -> Tone.js binding
+  - Single layer, one voice
+  - Fixed camera
+  - Basically, let's make a simpler this: https://www.google.com/logos/doodles/2017/fischinger/fischinger17.9.html
+  - Particle effects follow sounds.
+
+## Conclusion (5 mins)
+
+
+## Why use React for this? (Or: should I stop Using React For Everything?)
+  - Familiarity
+  - Code organization
+
+## Virtual DOM nodes as partial bindings
+
+### The static tree vs the dynamic tree
+
+## Goal: Use WebGL to render effects in a React app
+
+Probably will do the rocket ship, and use React to describe the render tree for it. That'll make it easy to make a quick fire editor. But again, I find myself asking: why use React for this?
+
+I really need an example, ideally one that demonstrates a use case that WebGL in React is good for.
+
+- Pink cords
+  - is so simple that it would be better to use instancing, which I don't know if I want to cover.
+
+- pgb-vsu
+  - solid use case
+  - requires interaction, probably raycasting
+
+- the presentation system itself
+  - Animate in response to scroll (using a light listener and requestAnimationFrame)
+  - Demonstrates a backcanvas approach to rendering effects on the page
+
+- Game of life
+  - kinda boring, suggests hardcore GPU solution that wouldn't involve React
+
+- The rocket ship
+  - fun, in theme
+  - not very useful?
+  - goes deeper into WebGL, if we render the plume with a SDF generated by a particle system. Could be high on the wow factor, but will it detract from the React part of the talk? OTOH, it's not just about React.
+
+- Debugger visualizer
+  - Maybe for the react tree?
+  - But it won't be as good as the React dev tools, so the point is unclear
+   
+## Approach 1: Use Web Components
+## Approach 2: Use React Context
+## Approach 3: Write a custom reconciler
+
